@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title>Advanced JS</title>
+    <script type="text/css">
+        select{
+            width: 300px;
+            height: 200px;
+        }
+    </script>
+</head>
+<body>
+<div class="div1" style="float: left">
+    <label>Available Employess:</label><br />
+    <select multiple="multiple" id="sel_first" style="width: 300px;height: 200px">
+        <option value="Ramesh">Ramesh</option>
+        <option value="Ra">ra</option>
+        <option value="as">as</option>
+    </select>
+</div>
+<div  style="float: left;margin-left: 20px;margin-right: 20px;margin-top: 20px;">
+    <button type="button" name="leftall" id="leftall">>></button><br /><br />
+    <button type="button" name="right" id="right">></button><br /><br />
+    <button type="button" name="left" id="left"><</button><br /><br />
+    <button type="button" name="rightall" id="rightall"><<</button><br /><br />
+</div>
+<div>
+<label>Selected Employess:</label><br />
+    <select multiple="multiple" id="sel_second" style="width: 300px;height: 200px">
+    </select>
+</div>
+</body>
+<script type="application/javascript">
+    var btn1 = document.getElementById('right');
+    var btn2 = document.getElementById('left');
+    var btn3 = document.getElementById('rightall');
+    var btn4 = document.getElementById('leftall');
+    btn1.onclick = function(e){
+        moveSelected('sel_second','sel_first');
+    }
+    btn2.onclick = function(e){
+        moveSelected('sel_first','sel_second');
+    }
+    btn4.onclick = function(e){
+        moveAll('sel_second','sel_first');
+    }
+    btn3.onclick = function(e){
+        moveAll('sel_first','sel_second');
+    }
+    function moveSelected(from,to){
+        var a1 = document.getElementsByTagName('option');
+        var sec = document.getElementById(from);
+        var fir = document.getElementById(to);
+        var opt = document.createElement('option');
+        var a2 = [];
+        for(var i=0; i<a1.length; i++) {
+            if(a1[i].selected) {
+                opt.text = a1[i].innerHTML;
+                opt.value = a1[i].innerHTML;
+                sec.add(opt);
+                fir.remove(fir.selectedIndex);
+            }
+        }
+    }
+    function moveAll(from,to){
+        var a1 = document.getElementsByTagName('option');
+        var sec = document.getElementById(from);
+        var fir = document.getElementById(to);
+        var opt = document.createElement('option');
+        var a2 = [];
+        for(var i=0; i<a1.length; i++) {
+            console.log(a1[i]);
+                opt.text = a1[i].innerHTML;
+                opt.value = a1[i].innerHTML;
+                sec.add(opt);
+//                fir.remove(fir.selectedIndex);
+        }
+    }
+
+
+</script>
+</html>
